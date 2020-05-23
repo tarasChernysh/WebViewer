@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		4836332F2479A18900D4C187 /* WebViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 4836332D2479A18900D4C187 /* WebViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		483633372479A3B400D4C187 /* LinkViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483633362479A3B400D4C187 /* LinkViewerVC.swift */; };
+		483633392479A3EA00D4C187 /* LinkerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483633382479A3EA00D4C187 /* LinkerCoordinator.swift */; };
+		4836333B2479A41100D4C187 /* LinkerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4836333A2479A41100D4C187 /* LinkerFactory.swift */; };
+		4836333F2479A4AA00D4C187 /* LinkContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4836333E2479A4AA00D4C187 /* LinkContent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4836332A2479A18900D4C187 /* WebViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4836332D2479A18900D4C187 /* WebViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewer.h; sourceTree = "<group>"; };
 		4836332E2479A18900D4C187 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		483633362479A3B400D4C187 /* LinkViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewerVC.swift; sourceTree = "<group>"; };
+		483633382479A3EA00D4C187 /* LinkerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkerCoordinator.swift; sourceTree = "<group>"; };
+		4836333A2479A41100D4C187 /* LinkerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkerFactory.swift; sourceTree = "<group>"; };
+		4836333E2479A4AA00D4C187 /* LinkContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkContent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +54,38 @@
 		4836332C2479A18900D4C187 /* WebViewer */ = {
 			isa = PBXGroup;
 			children = (
+				4836333D2479A48600D4C187 /* Controllers */,
+				4836333C2479A47C00D4C187 /* Models */,
+				483633352479A38F00D4C187 /* Moduls */,
 				4836332D2479A18900D4C187 /* WebViewer.h */,
 				4836332E2479A18900D4C187 /* Info.plist */,
 			);
 			path = WebViewer;
+			sourceTree = "<group>";
+		};
+		483633352479A38F00D4C187 /* Moduls */ = {
+			isa = PBXGroup;
+			children = (
+				483633362479A3B400D4C187 /* LinkViewerVC.swift */,
+				4836333A2479A41100D4C187 /* LinkerFactory.swift */,
+				483633382479A3EA00D4C187 /* LinkerCoordinator.swift */,
+			);
+			path = Moduls;
+			sourceTree = "<group>";
+		};
+		4836333C2479A47C00D4C187 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4836333E2479A4AA00D4C187 /* LinkContent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4836333D2479A48600D4C187 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +131,7 @@
 				TargetAttributes = {
 					483633292479A18900D4C187 = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -131,6 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				483633372479A3B400D4C187 /* LinkViewerVC.swift in Sources */,
+				4836333F2479A4AA00D4C187 /* LinkContent.swift in Sources */,
+				4836333B2479A41100D4C187 /* LinkerFactory.swift in Sources */,
+				483633392479A3EA00D4C187 /* LinkerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +301,7 @@
 		483633332479A18900D4C187 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9C25ZWATG7;
@@ -278,6 +320,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -286,6 +329,7 @@
 		483633342479A18900D4C187 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9C25ZWATG7;
