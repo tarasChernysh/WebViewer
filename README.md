@@ -15,7 +15,7 @@ coordinator.start()
 
 That's it.
 
-**Instaletion**
+**Installation**
 1) cd /Project.xcodeproj
 
 2) git submodule add https://github.com/tarasChernysh/WebViewer.git 
