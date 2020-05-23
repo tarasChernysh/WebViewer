@@ -30,6 +30,7 @@ final class LinkViewerVC: UIViewController {
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.hidesWhenStopped = true
+        indicator.color = UIColor.gray
         indicator.startAnimating()
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
