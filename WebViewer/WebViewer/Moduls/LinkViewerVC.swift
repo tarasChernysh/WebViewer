@@ -17,11 +17,10 @@ protocol LinkViewerVCDelegate: class {
     func linkViewerVC(webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation)
     func linkViewerVC(webView: WKWebView, didFinish navigation: WKNavigation)
     func linkViewerVC(webView: WKWebView, didFail navigation: WKNavigation, withError error: Error)
-    
 }
 
 final class LinkViewerVC: UIViewController {
-    
+    // MARK: - Properties
     private let webView: WKWebView = {
         let wv = WKWebView()
         wv.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +30,7 @@ final class LinkViewerVC: UIViewController {
     private let activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .whiteLarge)
         indicator.hidesWhenStopped = true
-        indicator.backgroundColor = .gray
+        indicator.color = UIColor.gray
         indicator.startAnimating()
         indicator.translatesAutoresizingMaskIntoConstraints = false
         return indicator
@@ -41,6 +40,7 @@ final class LinkViewerVC: UIViewController {
     // need to retain to live LinkerCoordinator
     private var delegate: LinkViewerVCDelegate
     
+    // MARK: - Lifecycle
     init(linkContent: LinkContent, delegate: LinkViewerVCDelegate) {
         self.delegate = delegate
         self.linkContent = linkContent
@@ -52,15 +52,12 @@ final class LinkViewerVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Lifecycle
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
     }
-
-    // MARK: Private
-
+    
+    // MARK: - Setup
     func setupViewController() {
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -68,7 +65,7 @@ final class LinkViewerVC: UIViewController {
         loadWebPage()
         setupLayout()
     }
-
+    
     private func loadWebPage() {
         webView.load(linkContent.urlRequest)
     }
@@ -92,6 +89,7 @@ final class LinkViewerVC: UIViewController {
         [activityCenterY, activityCenterX, activityWidth, activityHeight].forEach { $0.isActive = true }
     }
     
+    // MARK: - GUI
     private enum GUI {
         static let indicatorHeight: CGFloat = 30
         static let indicatorWidth: CGFloat = 30
@@ -111,20 +109,19 @@ extension LinkViewerVC: WKUIDelegate, WKNavigationDelegate {
                               windowFeatures: windowFeatures)
         return nil
     }
-
+    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         delegate.linkViewerVC(webView: webView, didStartProvisionalNavigation: navigation)
-        //activityIndicator.startAnimating()
+        activityIndicator.startAnimating()
     }
-
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         delegate.linkViewerVC(webView: webView, didFinish: navigation)
-        //activityIndicator.stopAnimating()
+        activityIndicator.stopAnimating()
     }
-
+    
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         delegate.linkViewerVC(webView: webView, didFail: navigation, withError: error)
-        //activityIndicator.stopAnimating()
-        //showErrorAlert(error)
+        activityIndicator.stopAnimating()
     }
 }
