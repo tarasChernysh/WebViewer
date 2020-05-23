@@ -31,6 +31,7 @@ final public class LinkViewerCoordinator {
                 delegate: LinkViewerCoordinatorDelegate?) {
         self.viewController = controller
         self.content = content
+        self.delegate = delegate
     }
     
     public func start() {
@@ -56,6 +57,9 @@ extension LinkViewerCoordinator: LinkViewerVCDelegate {
                       createWebViewWith configuration: WKWebViewConfiguration,
                       for navigationAction: WKNavigationAction,
                       windowFeatures: WKWindowFeatures) {
-       
+        delegate?.linkViewerCoordinator(webView: webView,
+                                        createWebViewWith: configuration,
+                                        for: navigationAction,
+                                        windowFeatures: windowFeatures)
     }
 }
